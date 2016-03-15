@@ -14,7 +14,7 @@ We used the `link` function in our previous lab, however we don't actually know 
 
 Each directive has a lifecycle. Up until now we've only been using one part of the lifecycle - the controller. The controller is initiated and ran just before the directive is about to be mounted into the DOM. This is so we can manipulate any values that we need in time for the rendering.
 
-However, it might come to the point where we need to actually do raw DOM manipulation on the directive itself. One problem - the controller is initiated *before* the directive is in the DOM. What do we do?
+However, it might come to the point where we need to actually do raw DOM manipulation on the directive itself. For instance, we might have a jQuery plugin that straps into a DOM element - we'd need the actual DOM element in order to initiate it. One problem - the controller is initiated *before* the directive is in the DOM. What do we do?
 
 
 ### `link`
@@ -114,5 +114,16 @@ controller
 pre-link
 post-link
 ```
+
+What are all of these stages?
+
+- `compile` - ready to compile the directive
+- `controller` - manipulate all data before the directive is actually compiled
+- `pre-link` - the directive is compiled to DOM nodes, but isn't inserted into the DOM
+- `post-link` - the directive has been inserted into the DOM (same as the link function)
+
+Generally, we should be using the pre-link (compile) function to do any DOM manipulation - moving nodes, changing HTML/styles etc.
+
+We'd want to use the post-link (link) function to add event listeners.
 
 This gives us full control over what we want to do with our directives.
