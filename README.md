@@ -71,7 +71,7 @@ These are `pre-link` and `post-link` functions, giving us access to every single
 
 Take a look at this diagram of the lifecycle:
 
-![http://i.stack.imgur.com/XRDs6.png](Image)
+![Image](http://i.stack.imgur.com/XRDs6.png)
 
 This means that if we put some `console.log` calls in our compile function, as so:
 
