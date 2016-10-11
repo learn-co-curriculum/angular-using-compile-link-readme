@@ -12,7 +12,7 @@ We used the `link` function in our previous lab, however we don't actually know 
 
 ## Directive Lifecycle
 
-Each directive has a lifecycle. Up until now we've only been using one part of the lifecycle - the controller. The controller is initiated and ran just before the directive is about to be mounted into the DOM. This is so we can manipulate any values that we need in time for the rendering.
+Each directive has a lifecycle. Up until now we've only been using one part of the lifecycle - the controller. The controller is initiated and run just before the directive is about to be mounted into the DOM. This is so we can manipulate any values that we need in time for the rendering.
 
 However, it might come to the point where we need to actually do raw DOM manipulation on the directive itself. For instance, we might have a jQuery plugin that straps into a DOM element - we'd need the actual DOM element in order to initiate it. One problem - the controller is initiated *before* the directive is in the DOM. What do we do?
 
@@ -40,11 +40,11 @@ angular
   .directive('someDirective', someDirective);
 ```
 
-You can see above that we get three parameters (they must be in that order!). `$scope` - much like what we can inject into our controllers. `$element`, our DOM mounted element, and `$attrs`, an object of all the attributes used when the directive is initiated.
+You can see above that we get three parameters (they must be in that order). `$scope` - much like what we can inject into our controllers. `$element`, our DOM mounted element, and `$attrs`, an object of all the attributes used when the directive is initiated.
 
 ### `compile`
 
-Compile allows us to manipulate the element before it is inserted into the DOM. This runs in between the `controller` and the `link` function. This gives us access to the unmounted DOM node, and the attributes.
+Compile allows us to manipulate the element before it is inserted into the DOM. This runs in between the `controller` and the `link` function. This gives us access to the unmounted DOM node and the attributes.
 
 ```js
 function someDirective() {
